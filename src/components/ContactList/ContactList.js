@@ -18,7 +18,6 @@ export default function ContactList() {
   }, [dispatch]);
 
   const contacts = useSelector(selectFilteredContacts);
-  // if (contacts.length === 0) return;
   return (
     <>
       {contacts.length > 0 && (

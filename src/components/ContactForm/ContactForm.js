@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAddContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
+import { SpinnerButton } from 'components/Spinner/SpinnerButton';
+import { selectIsLoading } from 'redux/selectors';
 import css from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -11,6 +13,7 @@ export default function ContactForm() {
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
 
   const handleInputChange = event => {
     const { name, value } = event.currentTarget;
@@ -83,8 +86,9 @@ export default function ContactForm() {
         type="submit"
         className={css.button}
         onClick={styledButtonAfterClick}
+        disabled={isLoading}
       >
-        Add Contact
+        {isLoading ? <SpinnerButton /> : 'Add Contact'}
       </button>
     </form>
   );
