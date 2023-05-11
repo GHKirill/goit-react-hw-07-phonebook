@@ -34,8 +34,7 @@ export default function ContactForm() {
       alert(`${name} is already is in contacts`);
       return;
     }
-    //const phone = number;
-    dispatch(fetchAddContact({ name, number }));
+    dispatch(fetchAddContact({ name: name, phone: number }));
   };
 
   const checkContactAsCurrent = newName => {
