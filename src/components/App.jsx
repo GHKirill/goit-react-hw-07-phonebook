@@ -21,7 +21,7 @@ export function App() {
         <ContactForm />
         <h2>Contacts</h2>
         <Filter />
-        {isLoading && firstRenderSpinner && (
+        {isLoading && firstRenderSpinner.current && (
           <>
             {
               <RotatingLines
