@@ -6,17 +6,17 @@ import { fetchContacts } from 'redux/operations';
 import { useDispatch } from 'react-redux';
 import { selectFilteredContacts } from 'redux/selectors';
 
-export default function ContactList() {
-  //const firstRender = useRef(true);
+export default function ContactList({ setSpinner }) {
+  //const firstRender = useRef(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    // if (firstRender.current) {
-    //   firstRender.current = false;
-    //   return;
-    // }
+    //   if (firstRender.current) {
+    //     firstRender.current = true;
+    //     return;
+    //   }
     dispatch(fetchContacts());
   }, [dispatch]);
-
+  setSpinner();
   const contacts = useSelector(selectFilteredContacts);
   return (
     <>
