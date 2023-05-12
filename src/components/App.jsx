@@ -10,7 +10,7 @@ export function App() {
   const firstRenderSpinner = useRef(true);
   const isLoading = useSelector(state => state.contacts.isLoading);
   const setSpinnerUpdate = () => {
-    if (firstRenderSpinner) {
+    if (firstRenderSpinner.current) {
       firstRenderSpinner.current = false;
       return;
     }
