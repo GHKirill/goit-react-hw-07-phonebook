@@ -6,7 +6,7 @@ import { fetchContacts } from 'redux/operations';
 import { useDispatch } from 'react-redux';
 import { selectFilteredContacts } from 'redux/selectors';
 
-export default function ContactList({ setSpinner }) {
+export default function ContactList() {
   //const firstRender = useRef(false);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -16,7 +16,6 @@ export default function ContactList({ setSpinner }) {
     //   }
     dispatch(fetchContacts());
   }, [dispatch]);
-  setSpinner();
   const contacts = useSelector(selectFilteredContacts);
   return (
     <>
