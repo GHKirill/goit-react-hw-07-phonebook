@@ -8,10 +8,10 @@ import { fetchDeleteContact } from 'redux/operations';
 export default function ContactItem({ id, name, phone }) {
   const [buttonIsLoad, setButtonIsLoad] = useState(false);
   const dispatch = useDispatch();
-  // const handleDeleteButton = id => {
-  //   dispatch(fetchDeleteContact({ id }));
-  //   setButtonIsLoad(true);
-  // };
+  const handleDeleteButton = id => {
+    dispatch(fetchDeleteContact({ id }));
+    setButtonIsLoad(true);
+  };
   return (
     <>
       <span className={css.contactName}>{name}</span>
@@ -19,11 +19,11 @@ export default function ContactItem({ id, name, phone }) {
       <IconButton
         type="button"
         loading={buttonIsLoad}
-        onClick={() => {
-          dispatch(fetchDeleteContact({ id }));
-          setButtonIsLoad(true);
-        }}
-        //onClick={id => handleDeleteButton(id)}
+        // onClick={() => {
+        //   dispatch(fetchDeleteContact({ id }));
+        //   setButtonIsLoad(true);
+        // }}
+        onClick={() => handleDeleteButton(id)}
         aria-label="delete"
         id={id}
       ></IconButton>
