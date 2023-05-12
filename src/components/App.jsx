@@ -2,13 +2,18 @@ import ContactList from 'components/ContactList/ContactList';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import { RotatingLines } from 'react-loader-spinner';
 export function App() {
   const [spinnerVisible, setSpinnerVisible] = useState(true);
+  const firstRenderSpinner = useRef(true);
   const isLoading = useSelector(state => state.contacts.isLoading);
   const setSpinnerUpdate = () => {
+    if (firstRenderSpinner) {
+      firstRenderSpinner.current = false;
+      return;
+    }
     setSpinnerVisible(false);
   };
   return (
